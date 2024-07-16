@@ -1,4 +1,4 @@
-package me.basiqueevangelist.dfudebughacks.neoforge.asm;
+package me.basiqueevangelist.dfudebughacks;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

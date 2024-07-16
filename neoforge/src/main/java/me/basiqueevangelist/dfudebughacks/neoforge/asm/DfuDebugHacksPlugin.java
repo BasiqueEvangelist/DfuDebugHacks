@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.utils.ClassGenUtils;
 import cpw.mods.cl.ModuleClassLoader;
 import net.auoeke.reflect.Reflect;
 import org.objectweb.asm.tree.ClassNode;
+import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
@@ -20,6 +21,8 @@ public class DfuDebugHacksPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
+        LoggerFactory.getLogger("DfuDebugHacks/NeoForge").info("Injecting into NeoForge to enable DFU modification");
+
         var instrumentation = Reflect.instrument()
             .valueOrGet(() -> {
                 throw new IllegalStateException("Instrumentation not present. DfuDebugHacks cannot work.");

@@ -1,5 +1,6 @@
 package me.basiqueevangelist.dfudebughacks.neoforge.asm;
 
+import me.basiqueevangelist.dfudebughacks.HookMethod;
 import net.auoeke.reflect.ClassDefiner;
 
 public class MixinExtrasHook {

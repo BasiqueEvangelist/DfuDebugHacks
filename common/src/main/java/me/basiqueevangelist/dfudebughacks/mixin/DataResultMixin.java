@@ -30,8 +30,6 @@ public interface DataResultMixin {
         remap = false
     )
     private static <R> void wrapMessageWithStacktrace(CallbackInfoReturnable<Optional<DataResult.Error<R>>> cir, @Local(argsOnly = true) LocalRef<Supplier<String>> messageSupplier) {
-        System.out.println("meow");
-
         var ogSupplier = messageSupplier.get();
         var ogClass = ogSupplier.getClass();
         if (ogSupplier instanceof StackTraceSupplier) return;

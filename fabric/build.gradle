@@ -39,3 +39,15 @@ loom {
         }
     }
 }
+
+configurations {
+    libraries
+    implementation.extendsFrom libraries
+    include.extendsFrom libraries
+}
+
+dependencies {
+    libraries "net.auoeke:result:${project.auoeke_result}"
+    libraries "net.auoeke:unsafe:${project.auoeke_unsafe}"
+    libraries "net.auoeke:reflect:${project.auoeke_reflect}"
+}

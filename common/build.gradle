@@ -16,6 +16,11 @@ neoForge {
     }
 }
 
+configurations {
+    libraries
+    compileOnly.extendsFrom libraries
+}
+
 dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
@@ -24,6 +29,10 @@ dependencies {
     annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
 
     compileOnly "org.ow2.asm:asm-tree:9.3"
+
+    libraries "net.auoeke:result:${project.auoeke_result}"
+    libraries "net.auoeke:unsafe:${project.auoeke_unsafe}"
+    libraries "net.auoeke:reflect:${project.auoeke_reflect}"
 }
 
 configurations {
