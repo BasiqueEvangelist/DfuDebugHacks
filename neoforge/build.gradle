@@ -1,0 +1,54 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+}
+
+configurations {
+    libraries
+    implementation.extendsFrom libraries
+    jarJar.extendsFrom libraries
+}
+
+neoForge {
+    version = neoforge_version
+    // Automatically enable neoforge AccessTransformers if the file exists
+    def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.add(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            environment("NOUVEAU_USE_ZINK", "1")
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
+
+            additionalRuntimeClasspathConfiguration.extendsFrom configurations.libraries
+        }
+        client {
+            client()
+        }
+        data {
+            data()
+        }
+        server {
+            server()
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    libraries "net.auoeke:result:${project.auoeke_result}"
+    libraries "net.auoeke:unsafe:${project.auoeke_unsafe}"
+    libraries "net.auoeke:reflect:${project.auoeke_reflect}"
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }

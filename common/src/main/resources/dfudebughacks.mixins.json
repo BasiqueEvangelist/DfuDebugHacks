@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.basiqueevangelist.dfudebughacks.mixin",
+  "refmap": "dfudebughacks.refmap.json",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "DataResultMixin",
+    "DataResultMixin$DataResultErrorMixin"
+  ],
+  "client": [
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+
